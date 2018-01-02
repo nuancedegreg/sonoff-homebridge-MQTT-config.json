@@ -1,0 +1,107 @@
+ {
+
+    "bridge": {
+        "name": "Homebridge",
+        "username": "CC:22:3D:E3:CE:30",
+        "port": 1883,
+        "pin": "031-45-154"
+    },
+
+    "description": "This is an example configuration file. You can use this as a template for creating your own configuration file.",
+
+    "platforms": [],
+
+    "accessories": [{
+            "accessory": "mqtt-temperature-tasmota",
+
+            "name": "Température cuisine",
+
+            "url": "mqtt://iot.eclipse.org",
+            "username": "MQTT USER NAME",
+            "password": "MQTT PASSWORD",
+
+            "topic": "tele/sonoff/SENSOR",
+
+            "activityTopic": "tele/sonoff/LWT",
+            "activityParameter": "Online",
+
+            "sensorPropertyName": "AM2301",
+
+            "manufacturer": "ITEAD",
+            "model": "Sonoff TH",
+            "serialNumberMAC": "MAC OR SERIAL NUMBER"
+        },
+        {
+            "accessory": "mqtt-switch-tasmota",
+            "switchType": "outlet",
+
+            "name": "Chauffage cuisine ",
+
+            "url": "mqtt://iot.eclipse.org",
+            "username": "MQTT USER NAME",
+            "password": "MQTT PASSWORD",
+
+            "topics": {
+                "statusGet": "stat/sonoff/RESULT",
+                "statusSet": "cmnd/sonoff/POWER",
+                "stateGet": "tele/sonoff/STATE"
+            },
+            "onValue": "ON",
+            "offValue": "OFF",
+
+            "activityTopic": "tele/sonoff/LWT",
+            "activityParameter": "Online",
+
+            "manufacturer": "ITEAD",
+            "model": "Sonoff",
+            "serialNumberMAC": "MAC OR SERIAL NUMBER OR EMPTY"
+        },
+        {
+            "accessory": "mqtt-humidity-tasmota",
+
+            "name": "Hygrométrie",
+
+            "url": "mqtt://iot.eclipse.org",
+            "username": "MQTT USER NAME",
+            "password": "MQTT PASSWORD",
+
+            "topic": "tele/sonoff/SENSOR",
+
+            "activityTopic": "tele/sonoff/LWT",
+            "activityParameter": "Online",
+
+
+            "sensorPropertyName": "AM2301",
+
+            "manufacturer": "ITEAD",
+            "model": "Sonoff TH",
+            "serialNumberMAC": "MAC OR SERIAL NUMBER"
+
+
+        }, {
+            "accessory": "mqtt-switch-tasmota",
+            "switchType": "outlet",
+
+            "name": "led cuisine",
+
+            "url": "mqtt://iot.eclipse.org",
+            "username": "MQTT USER NAME",
+            "password": "MQTT PASSWORD",
+
+            "topics": {
+                "statusGet": "stat/led/RESULT",
+                "statusSet": "cmnd/led/POWER",
+                "stateGet": "tele/led/STATE"
+            },
+            "onValue": "ON",
+            "offValue": "OFF",
+
+            "activityTopic": "tele/led/LWT",
+            "activityParameter": "Online",
+
+            "manufacturer": "ITEAD",
+            "model": "Sonoff",
+            "serialNumberMAC": "MAC OR SERIAL NUMBER OR EMPTY"
+        }
+    ]
+ }
